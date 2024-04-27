@@ -1,0 +1,17 @@
+version: 0.1.0
+services:
+  ch:
+    container_name: clickhouse
+    image: yandex/clickhouse-server
+    ports:
+      - "8123:8123"  # HTTP interface
+      - "9000:9000"  # Native protocol interface
+      - "9009:9009"
+    environment:
+      - CLICKHOUSE_DB=test
+      - CLICKHOUSE_USER=user
+      - CLICKHOUSE_PASSWORD=123
+    volumes:
+      - data:/var/usr/lib
+volumes:
+  data:
